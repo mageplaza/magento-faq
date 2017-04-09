@@ -2,7 +2,7 @@
 
 **Magento FAQ** allows customers to find answered questions on articles list. Magento FAQ is an effective way to improve customer experience and reduce customer related enquiries. Point your customers with questions to instant service resource so they can find all the necessary information to make a confident purchase in your store.
 
-*Magento FAQ** is a perfect way and a feature rich resolution to help your customers find solutions for their needs in a fully independent support resource that is easy to manage. It is an effective knowledge sharing point, which allows your customers to self-service the solutions to their problems before contacting the helpdesk team.
+**Magento FAQ** is a perfect way and a feature rich resolution to help your customers find solutions for their needs in a fully independent support resource that is easy to manage. It is an effective knowledge sharing point, which allows your customers to self-service the solutions to their problems before contacting the helpdesk team.
 
 This **Knowledge base module** will help you organize better all Questions & Answers, by grouping them into special categories and assign them tags, for better indexing. Answers can be easily edited, and photos can be integrated in these answers.
 

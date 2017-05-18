@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza_Kb extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Mageplaza
+ * @package        Mageplaza_Kb
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<widgets>
+    <kb_article_view type="mageplaza_kb/article_widget_view" translate="name description" module="mageplaza_kb">
+        <name>Article view</name>
+        <description>Article view widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <article_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Article</label>
+                <type>label</type>
+                <helper_block>
+                    <type>mageplaza_kb/adminhtml_article_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Article</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>120</sort_order>
+            </article_id>
+        </parameters>
+    </kb_article_view>
+    <kb_article_link type="mageplaza_kb/article_widget_link" translate="name description" module="mageplaza_kb">
+        <name>Article link</name>
+        <description>Article link widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <article_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Article</label>
+                <type>label</type>
+                <helper_block>
+                    <type>mageplaza_kb/adminhtml_article_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Article</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>130</sort_order>
+            </article_id>
+        </parameters>
+    </kb_article_link>
+    <kb_category_view type="mageplaza_kb/category_widget_view" translate="name description" module="mageplaza_kb">
+        <name>Category view</name>
+        <description>Category view widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <category_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>mageplaza_kb/adminhtml_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>120</sort_order>
+            </category_id>
+        </parameters>
+    </kb_category_view>
+    <kb_category_link type="mageplaza_kb/category_widget_link" translate="name description" module="mageplaza_kb">
+        <name>Category link</name>
+        <description>Category link widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <category_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>mageplaza_kb/adminhtml_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>130</sort_order>
+            </category_id>
+        </parameters>
+    </kb_category_link>
+    <kb_tag_view type="mageplaza_kb/tag_widget_view" translate="name description" module="mageplaza_kb">
+        <name>Tag view</name>
+        <description>Tag view widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <tag_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Tag</label>
+                <type>label</type>
+                <helper_block>
+                    <type>mageplaza_kb/adminhtml_tag_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Tag</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>120</sort_order>
+            </tag_id>
+        </parameters>
+    </kb_tag_view>
+    <kb_tag_link type="mageplaza_kb/tag_widget_link" translate="name description" module="mageplaza_kb">
+        <name>Tag link</name>
+        <description>Tag link widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <tag_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Tag</label>
+                <type>label</type>
+                <helper_block>
+                    <type>mageplaza_kb/adminhtml_tag_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Tag</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>130</sort_order>
+            </tag_id>
+        </parameters>
+    </kb_tag_link>
+    <kb_category_subtree type="mageplaza_kb/category_widget_subtree" translate="name description" module="mageplaza_kb">
+        <name>Category subtree</name>
+        <description>Category subtree widget</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <category_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>mageplaza_kb/adminhtml_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </category_id>
+            <recursion type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <value>0</value>
+                <label>Levels to show (0 for all)</label>
+                <type>text</type>
+                <sort_order>20</sort_order>
+            </recursion>
+        </parameters>
+    </kb_category_subtree>
+</widgets>

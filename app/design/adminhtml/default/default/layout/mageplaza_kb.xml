@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza_Kb extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Mageplaza
+ * @package        Mageplaza_Kb
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_kb_article_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>mageplaza_kb/article</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/adminhtml_article" name="article">
+                <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+
+        </reference>
+    </adminhtml_kb_article_index>
+    <adminhtml_kb_article_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_article_grid" name="article_grid"/>
+        </block>
+    </adminhtml_kb_article_grid>
+    <!-- Article add/edit action -->
+    <adminhtml_kb_article_edit>
+        <reference  name="root">
+            <action method="setTemplate">
+                <template>mageplaza_kb/page.phtml</template>
+            </action>
+        </reference>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>mageplaza_kb/article</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/adminhtml_article_edit" name="article_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-"></block>
+            <block type="mageplaza_kb/adminhtml_article_edit_tabs" name="article_tabs"></block>
+        </reference>
+        <reference name="head">
+            <action method="setCanLoadTinyMce">
+                <load>1</load>
+            </action>
+        </reference>
+        <reference name="js">
+            <block type="core/template" name="catalog.wysiwyg.js" template="catalog/wysiwyg/js.phtml"/>
+        </reference>
+    </adminhtml_kb_article_edit>
+
+    <adminhtml_kb_tag_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>mageplaza_kb/tag</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/adminhtml_tag" name="tag" />
+
+        </reference>
+    </adminhtml_kb_tag_index>
+    <adminhtml_kb_tag_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_tag_grid" name="tag_grid"/>
+        </block>
+    </adminhtml_kb_tag_grid>
+    <!-- Tag add/edit action -->
+    <adminhtml_kb_tag_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>mageplaza_kb/tag</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/adminhtml_tag_edit" name="tag_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="mageplaza_kb/adminhtml_tag_edit_tabs" name="tag_tabs"></block>
+        </reference>
+    </adminhtml_kb_tag_edit>
+
+    <adminhtml_kb_article_catalog_product_articles>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_catalog_product_edit_tab_article" name="product.edit.tab.article"/>
+            <block type="adminhtml/widget_grid_serializer" name="article_grid_serializer">
+                <reference name="article_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>product.edit.tab.article</grid_block_name>
+                        <data_callback>getSelectedArticles</data_callback>
+                        <hidden_input_name>articles</hidden_input_name>
+                        <reload_param_name>product_articles</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_kb_article_catalog_product_articles>
+    <adminhtml_kb_article_catalog_product_articlesgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_catalog_product_edit_tab_article" name="product.edit.tab.article"/>
+        </block>
+    </adminhtml_kb_article_catalog_product_articlesgrid>
+    <adminhtml_kb_article_products>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_article_edit_tab_product" name="article.edit.tab.product"/>
+            <block type="adminhtml/widget_grid_serializer" name="product_grid_serializer">
+                <reference name="product_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>article.edit.tab.product</grid_block_name>
+                            <data_callback>getSelectedProducts</data_callback>
+                            <hidden_input_name>products</hidden_input_name>
+                            <reload_param_name>article_products</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_kb_article_products>
+    <adminhtml_kb_article_productsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_article_edit_tab_product" name="article.edit.tab.product"/>
+        </block>
+    </adminhtml_kb_article_productsgrid>
+    <adminhtml_kb_article_tags>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_article_edit_tab_tag" name="mageplaza_kb.article.edit.tab.tag"/>
+            <block type="adminhtml/widget_grid_serializer" name="tag_grid_serializer">
+                <reference name="tag_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>mageplaza_kb.article.edit.tab.tag</grid_block_name>
+                            <data_callback>getSelectedTags</data_callback>
+                            <hidden_input_name>tags</hidden_input_name>
+                            <reload_param_name>article_tags</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_kb_article_tags>
+    <adminhtml_kb_article_tagsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_article_edit_tab_tag" name="mageplaza_kb.article.edit.tab.tag"/>
+        </block>
+    </adminhtml_kb_article_tagsgrid>
+    <adminhtml_kb_tag_articles>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_tag_edit_tab_article" name="mageplaza_kb.tag.edit.tab.article"/>
+            <block type="adminhtml/widget_grid_serializer" name="article_grid_serializer">
+                <reference name="article_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>mageplaza_kb.tag.edit.tab.article</grid_block_name>
+                            <data_callback>getSelectedArticles</data_callback>
+                            <hidden_input_name>articles</hidden_input_name>
+                            <reload_param_name>tag_articles</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_kb_tag_articles>
+    <adminhtml_kb_tag_articlesgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_tag_edit_tab_article" name="mageplaza_kb.tag.edit.tab.article"/>
+        </block>
+    </adminhtml_kb_tag_articlesgrid>
+    <adminhtml_kb_category_edit>
+        <update handle="editor"/>
+        <reference name="left">
+            <block name="category.tree" type="mageplaza_kb/adminhtml_category_tree" />
+        </reference>
+        <reference name="content">
+            <block name="category.edit" type="mageplaza_kb/adminhtml_category_edit" template="mageplaza_kb/category/edit.phtml" />
+        </reference>
+        <reference name="js">
+            <block type="core/template" template="catalog/wysiwyg/js.phtml" name="catalog.wysiwyg.js" />
+        </reference>
+    </adminhtml_kb_category_edit>
+    <adminhtml_kb_article_categorys>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_article_edit_tab_category" name="article.edit.tab.category"/>
+        </block>
+    </adminhtml_kb_article_categorys>
+    <adminhtml_kb_article_attribute_index>
+        <reference name="content">
+            <block type="mageplaza_kb/adminhtml_article_attribute" name="attribute_grid"></block>
+        </reference>
+    </adminhtml_kb_article_attribute_index>
+    <adminhtml_kb_article_attribute_edit>
+        <reference name="left">
+            <block type="mageplaza_kb/adminhtml_article_attribute_edit_tabs" name="attribute_edit_tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/adminhtml_article_attribute_edit" name="attribute_edit_content"></block>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" name="attribute_edit_js" template="mageplaza_kb/attribute/js.phtml">
+                <action method="setMainEntityName"><name>article</name></action>
+            </block>
+        </reference>
+    </adminhtml_kb_article_attribute_edit>
+    <adminhtml_kb_article_comment_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>mageplaza_kb/article_comment</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/adminhtml_article_comment" name="article_comment_grid"/>
+        </reference>
+    </adminhtml_kb_article_comment_index>
+    <adminhtml_kb_article_comment_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mageplaza_kb/adminhtml_article_comment_grid" name="article_comment_grid"/>
+        </block>
+    </adminhtml_kb_article_comment_grid>
+    <adminhtml_kb_article_comment_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>mageplaza_kb/article_comment</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/adminhtml_article_comment_edit" name="article_comment_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="mageplaza_kb/adminhtml_article_comment_edit_tabs" name="article_comment_tabs"></block>
+        </reference>
+    </adminhtml_kb_article_comment_edit>
+</layout>

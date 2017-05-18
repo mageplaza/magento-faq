@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza_Kb extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Mageplaza
+ * @package        Mageplaza_Kb
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <js>css/mageplaza_kb/style.css</js>
+            </action>
+        </reference>
+
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" module="mageplaza_kb">
+                <label>FAQ</label>
+                <url helper="mageplaza_kb/article/getArticlesUrl"/>
+                <title>FAQ</title>
+                <prepare/>
+                <urlParams/>
+                <position>120</position>
+            </action>
+        </reference>
+
+        <reference name="footer" >
+            <block type="core/template" name="mp-copyright" template="mageplaza_kb/faq/copyright.phtml" />
+        </reference>
+
+    </default>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="mageplaza_kb">
+                <name>article_comments</name>
+                <path>mageplaza_kb/article_customer_comment</path>
+                <label>Articles Comments</label>
+            </action>
+        </reference>
+    </customer_account>
+    <mageplaza_kb_article_index translate="label" module="mageplaza_kb">
+        <label>Articles list</label>
+        <update handle="page_two_columns_left"/>
+        <reference name="content">
+            <block type="mageplaza_kb/article_list" name="article_list" template="mageplaza_kb/article/list.phtml"/>
+        </reference>
+    </mageplaza_kb_article_index>
+    <mageplaza_kb_category_index translate="label" module="mageplaza_kb">
+        <label>FAQ</label>
+        <update handle="page_two_columns_left"/>
+        <reference name="left">
+            <block type="mageplaza_kb/sidebar" name="faq_sidebar" template="mageplaza_kb/sidebar.phtml" before="-"/>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/category_list" name="category_list" template="mageplaza_kb/home.phtml">
+                <block type="mageplaza_kb/searchForm" name="search_form" as="search_form" template="mageplaza_kb/search_form.phtml"/>
+            </block>
+
+            <block type="mageplaza_kb/faq" template="mageplaza_kb/faq/footer.phtml" />
+
+
+        </reference>
+    </mageplaza_kb_category_index>
+
+    <mageplaza_kb_tag_index translate="label" module="mageplaza_kb">
+        <label>Tags list</label>
+        <update handle="page_two_columns_left"/>
+        <reference name="content">
+            <block type="mageplaza_kb/tag_list" name="tag_list" template="mageplaza_kb/tag/list.phtml"/>
+        </reference>
+    </mageplaza_kb_tag_index>
+    <mageplaza_kb_article_view translate="label" module="mageplaza_kb">
+        <label>Article view page</label>
+        <update handle="page_two_columns_left"/>
+        <reference name="left">
+            <block type="mageplaza_kb/sidebar" name="faq_sidebar" template="mageplaza_kb/sidebar.phtml" before="-"/>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/article_view" name="article_view" template="mageplaza_kb/article/view.phtml"/>
+            <!--<block type="mageplaza_kb/article_catalog_product_list" name="article.info.products" as="article_products"-->
+            <!--template="mageplaza_kb/article/catalog/product/list.phtml"/>-->
+            <!--<block type="mageplaza_kb/article_category_list" name="article.category_list" as="article_articles"-->
+            <!--template="mageplaza_kb/article/category/list.phtml"/>-->
+            <!--<block type="mageplaza_kb/article_tag_list" name="article.tag_list" as="article_articles"-->
+            <!--template="mageplaza_kb/article/tag/list.phtml"/>-->
+            <block type="mageplaza_kb/article_comment_list" name="article.comments_list" as="article_comment_list"
+                   template="mageplaza_kb/article/comment/list.phtml">
+                <block type="mageplaza_kb/article_comment_form" name="comment_form" as="comment_form"
+                       template="mageplaza_kb/article/comment/form.phtml"/>
+            </block>
+
+            <!--<block type="mageplaza_kb/faq" template="mageplaza_kb/faq/footer.phtml" />-->
+
+        </reference>
+    </mageplaza_kb_article_view>
+
+
+    <mageplaza_kb_article_search translate="label" module="mageplaza_kb">
+        <label>Search result</label>
+        <update handle="page_two_columns_left"/>
+        <reference name="left">
+            <block type="mageplaza_kb/sidebar" name="faq_sidebar" template="mageplaza_kb/sidebar.phtml" before="-"/>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/article_search" name="faq_search" as="faq_search" template="mageplaza_kb/article/search_result.phtml" />
+        </reference>
+    </mageplaza_kb_article_search>
+
+
+    <mageplaza_kb_category_view translate="label" module="mageplaza_kb">
+        <label>Category view page</label>
+        <update handle="page_two_columns_left"/>
+        <reference name="left">
+            <block type="mageplaza_kb/sidebar" name="faq_sidebar" template="mageplaza_kb/sidebar.phtml" before="-"/>
+        </reference>
+        <reference name="head">
+            <action method="addItem" ifconfig="mageplaza_kb/category/tree">
+                <type>skin_js</type>
+                <js>js/mageplaza_kb/tree.js</js>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="mageplaza_kb/category_view" name="category_view" template="mageplaza_kb/category/view.phtml"/>
+            <block type="mageplaza_kb/category_children" name="category_children"
+                   template="mageplaza_kb/category/children.phtml"/>
+            <block type="mageplaza_kb/category_article_list" name="category.article_list" as="category_categorys"
+                   template="mageplaza_kb/category/article/list.phtml"/>
+        </reference>
+    </mageplaza_kb_category_view>
+    <mageplaza_kb_tag_view translate="label" module="mageplaza_kb">
+        <label>Tag view page</label>
+        <update handle="page_two_columns_left"/>
+        <reference name="content">
+            <block type="mageplaza_kb/tag_view" name="tag_view" template="mageplaza_kb/tag/view.phtml"/>
+            <block type="mageplaza_kb/tag_article_list" name="tag.article_list" as="tag_tags"
+                   template="mageplaza_kb/tag/article/list.phtml"/>
+        </reference>
+    </mageplaza_kb_tag_view>
+    <mageplaza_kb_article_rss translate="label" module="mageplaza_kb">
+        <label>Articles rss feed</label>
+        <block type="mageplaza_kb/article_rss" output="toHtml" name="mageplaza_kb.article.rss"/>
+    </mageplaza_kb_article_rss>
+    <mageplaza_kb_category_rss translate="label" module="mageplaza_kb">
+        <label>Categories rss feed</label>
+        <block type="mageplaza_kb/category_rss" output="toHtml" name="mageplaza_kb.category.rss"/>
+    </mageplaza_kb_category_rss>
+    <mageplaza_kb_tag_rss translate="label" module="mageplaza_kb">
+        <label>Tags rss feed</label>
+        <block type="mageplaza_kb/tag_rss" output="toHtml" name="mageplaza_kb.tag.rss"/>
+    </mageplaza_kb_tag_rss>
+    <rss_index_index>
+        <reference name="content">
+            <block type="mageplaza_kb/rss" name="kb.rss" template="mageplaza_kb/rss.phtml">
+                <action method="addFeed" ifconfig="mageplaza_kb/article/rss" translate="label" module="mageplaza_kb">
+                    <label>Articles</label>
+                    <url helper="mageplaza_kb/article/getRssUrl"/>
+                </action>
+                <action method="addFeed" ifconfig="mageplaza_kb/category/rss" translate="label" module="mageplaza_kb">
+                    <label>Categories</label>
+                    <url helper="mageplaza_kb/category/getRssUrl"/>
+                </action>
+                <action method="addFeed" ifconfig="mageplaza_kb/tag/rss" translate="label" module="mageplaza_kb">
+                    <label>Tags</label>
+                    <url helper="mageplaza_kb/tag/getRssUrl"/>
+                </action>
+            </block>
+        </reference>
+    </rss_index_index>
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="mageplaza_kb/catalog_product_list_article" name="product.info.articles" as="product_articles"
+                   template="mageplaza_kb/catalog/product/list/article.phtml">
+                <action method="addToParentGroup">
+                    <group>detailed_info</group>
+                </action>
+                <action method="setTitle" translate="value" module="mageplaza_kb">
+                    <value>FAQ</value>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view>
+    <mageplaza_kb_article_customer_comment_index translate="label" module="mageplaza_kb">
+        <label>My Articles comments</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="mageplaza_kb/article_customer_comment_list" name="customer_article_comments"
+                   template="mageplaza_kb/article/customer/comment/list.phtml"/>
+        </reference>
+    </mageplaza_kb_article_customer_comment_index>
+    <mageplaza_kb_article_customer_comment_view translate="label" module="mageplaza_kb">
+        <label>My Articles comment view</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="mageplaza_kb/article_customer_comment_view" name="customer_article_comment"
+                   template="mageplaza_kb/article/customer/comment/view.phtml"/>
+        </reference>
+    </mageplaza_kb_article_customer_comment_view>
+</layout>

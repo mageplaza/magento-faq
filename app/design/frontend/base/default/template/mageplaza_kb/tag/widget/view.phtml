@@ -1,0 +1,33 @@
+<?php
+/**
+ * Mageplaza_Kb extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Mageplaza
+ * @package        Mageplaza_Kb
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Tag view widget template
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Kb
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $_tag = $this->getCurrentTag();?>
+<?php if ($_tag) :?>
+    <div class="tag-widget-view">
+        <h3><?php echo $_tag->getName()?></h3>
+        <div>
+
+        </div>
+    </div>
+<?php endif;?>

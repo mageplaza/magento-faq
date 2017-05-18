@@ -1,0 +1,42 @@
+<?php
+/**
+ * Mageplaza_Kb extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Mageplaza
+ * @package        Mageplaza_Kb
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Article view widget template
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Kb
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $_article = $this->getCurrentArticle();?>
+<?php if ($_article) :?>
+    <div class="article-widget-view">
+        <h3><?php echo $_article->getName()?></h3>
+        <div>
+            <div class="name-widget">
+                <?php echo Mage::helper('mageplaza_kb')->__('Name');?>:<?php echo $_article->getName();?>
+            </div>
+            <div class="content-widget">
+                <?php echo Mage::helper('mageplaza_kb')->__('Content');?>:<?php echo $_article->getContent();?>
+            </div>
+            <div class="avg_rating-widget">
+                <?php echo Mage::helper('mageplaza_kb')->__('Average Rating');?>:<?php echo $_article->getAvgRating();?>
+            </div>
+
+        </div>
+    </div>
+<?php endif;?>

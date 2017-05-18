@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza_Kb extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Mageplaza
+ * @package        Mageplaza_Kb
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <mageplaza_kb translate="title" module="mageplaza_kb">
+                                        <title>Kb</title>
+                                    </mageplaza_kb>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <mageplaza_kb translate="title" module="mageplaza_kb">
+                        <title>FAQ</title>
+                        <children>
+                            <article translate="title" module="mageplaza_kb">
+                                <title>Manage Articles</title>
+                                <sort_order>0</sort_order>
+                            </article>
+                            <article_attributes translate="title" module="mageplaza_kb">
+                                <title>Manage Article attributes</title>
+                                <sort_order>2</sort_order>
+                            </article_attributes>
+
+                            <article_comments translate="title" module="mageplaza_kb">
+                                <title>Manage Article Comments</title>
+                                <sort_order>5</sort_order>
+                            </article_comments>
+
+                            <category translate="title" module="mageplaza_kb">
+                                <title>Manage Categories</title>
+                                <sort_order>10</sort_order>
+                            </category>
+                            <tag translate="title" module="mageplaza_kb">
+                                <title>Tag</title>
+                                <sort_order>20</sort_order>
+                            </tag>
+                        </children>
+
+                        <settings module="mageplaza_kb" translate="title">
+                            <title>Settings</title>
+                            <sort_order>1000</sort_order>
+                        </settings>
+
+
+                    </mageplaza_kb>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <mageplaza_kb translate="title" module="mageplaza_kb">
+            <title>FAQ</title>
+            <sort_order>25</sort_order>
+            <children>
+                <article translate="title" module="mageplaza_kb">
+                    <title>Manage Articles</title>
+                    <action>adminhtml/kb_article</action>
+                    <sort_order>0</sort_order>
+                </article>
+
+                <article_attributes translate="title" module="mageplaza_kb">
+                    <title>Manage Article Attributes</title>
+                    <action>adminhtml/kb_article_attribute</action>
+                    <sort_order>7</sort_order>
+                </article_attributes>
+
+                <article_comments translate="title" module="mageplaza_kb">
+                    <title>Manage Article Comments</title>
+                    <action>adminhtml/kb_article_comment</action>
+                    <sort_order>4</sort_order>
+                </article_comments>
+
+                <category translate="title" module="mageplaza_kb">
+                    <title>Manage Categories</title>
+                    <action>adminhtml/kb_category</action>
+                    <sort_order>10</sort_order>
+                </category>
+                <tag translate="title" module="mageplaza_kb">
+                    <title>Tag</title>
+                    <action>adminhtml/kb_tag</action>
+                    <sort_order>20</sort_order>
+                </tag>
+
+
+                <settings module="mageplaza_kb" translate="title">
+                    <title>Settings</title>
+                    <sort_order>1000</sort_order>
+                    <action>adminhtml/system_config/edit/section/mageplaza_kb</action>
+                </settings>
+            </children>
+        </mageplaza_kb>
+    </menu>
+</config>

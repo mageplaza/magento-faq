@@ -1,0 +1,40 @@
+<?php
+/**
+ * Mageplaza_Kb extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Mageplaza
+ * @package        Mageplaza_Kb
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Article list template on product page
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Kb
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $articles = $this->getArticleCollection();?>
+<?php if ($articles && $articles->count() > 0) :?>
+<div class="box-collateral box-articles box-up-sell">
+    <ul class="kb-articles-listing">
+        <?php foreach ($articles as $_article) : ?>
+            <li class="item">
+                <?php $_article = Mage::getSingleton('mageplaza_kb/article')->load($_article->getId()); ?>
+                <a href="<?php echo $_article->getArticleUrl();?>">
+                    <?php echo $_article->getName();?>
+                </a><br />
+            </li>
+        <?php endforeach; ?>
+    </ul>
+
+</div>
+<?php endif;?>

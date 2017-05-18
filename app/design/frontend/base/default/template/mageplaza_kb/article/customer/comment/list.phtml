@@ -1,0 +1,53 @@
+<?php
+/**
+ * Mageplaza_Kb extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Mageplaza
+ * @package        Mageplaza_Kb
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * customer Articles comments template
+ * @category    Mageplaza
+ * @package     Mageplaza_Kb
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title">
+    <h1><?php echo $this->__('My Articles Comments') ?></h1>
+</div>
+<?php if ( $this->getCollection() && $this->count()): ?>
+    <?php echo $this->getToolbarHtml() ?>
+    <table class="data-table" id="my-article-comments-table">
+        <col width="1" />
+        <col width="1" />
+        <col />
+        <col width="1" />
+        <tbody>
+            <?php foreach ($this->getCollection() as $_comment): ?>
+            <tr>
+                <td><span class="nobr"><?php echo $this->dateFormat($_comment->getCtCreatedAt()); ?></span></td>
+                <td><h2 class="product-name"><a href="<?php echo $this->getArticleLink($_comment) ?>"><?php echo $this->escapeHtml($_comment->getName()) ?></a></h2></td>
+                <td><?php echo Mage::helper('core')->escapeHtml($_comment->getCtTitle()) ?></td>
+                <td><a href="<?php echo $this->getCommentLink($_comment) ?>" class="nobr"><?php echo $this->__('View Details') ?></a></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <script type="text/javascript">decorateTable('my-article-comments-table')</script>
+    <?php echo $this->getToolbarHtml() ?>
+<?php else: ?>
+    <p><?php echo $this->__('You have submitted no comments for articles.') ?></p>
+<?php endif; ?>
+<div class="buttons-set">
+    <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+</div>

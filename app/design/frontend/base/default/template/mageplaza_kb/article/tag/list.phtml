@@ -1,0 +1,37 @@
+<?php 
+/**
+ * Mageplaza_Kb extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Mageplaza
+ * @package        Mageplaza_Kb
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Article Tag list template
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Kb
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $_tags = $this->getTags(); ?>
+<?php if ($_tags->getSize() > 0) :?>
+<div class="page-title tag-title">
+    <h2><?php echo Mage::helper('mageplaza_kb')->__('Tags') ?></h2>
+</div>
+<div class="tags-list-container">
+    <?php $list = array();?>
+    <?php foreach ($_tags as $_tag) : ?>
+        <?php $list[] = '<a href="'.$_tag->getTagUrl().'"> '. $_tag->getName(). '</a>'; ?>
+    <?php endforeach;?>
+    <?php echo implode(', ', $list);?>
+</div>
+<?php endif;?>

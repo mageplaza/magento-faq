@@ -1,0 +1,88 @@
+<?php
+/**
+ * Mageplaza_Kb extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category       Mageplaza
+ * @package        Mageplaza_Kb
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Category list template
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Kb
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $_categories = $this->getCategorys(); ?>
+<div class="page-title category-title">
+    <?php if (Mage::helper('mageplaza_kb/category')->isRssEnabled()) : ?>
+        <a href="<?php echo Mage::helper('mageplaza_kb/category')->getRssUrl(); ?>"
+           class="link-rss"><?php echo Mage::helper('mageplaza_kb')->__('Subscribe to RSS Feed') ?></a>
+    <?php endif; ?>
+    <div class="kb-category-title">
+        <h2><?php echo Mage::helper('mageplaza_kb')->__('FAQ') ?></h2>
+    </div>
+</div>
+<?php if ($_categories->getSize() > 0 ) : ?>
+    <?php if ($this->_getDisplayMode() == 0) : ?>
+        <?php echo $this->getPagerHtml(); ?>
+        <div class="category-list-container">
+            <?php foreach ($_categories as $_category) : ?>
+                <div class="category-list-item">
+                    <h3><a href="<?php echo $_category->getCategoryUrl() ?>">
+                            <?php echo $_category->getName(); ?>
+                        </a></h3>
+                    <?php $articles = $this->getArticlesByCategory($_category); ?>
+                    <?php if($articles->getSize() > 0): ?>
+                    <div class="articles-box">
+                        <ul>
+                            <?php foreach($articles as $_article):?>
+                                <?php $_article = Mage::getSingleton('mageplaza_kb/article')->load($_article->getId()); ?>
+                                <li><a href="<?php echo $_article->getArticleUrl();?>"><?php echo $_article->getName();?></a> </li>
+                            <?php endforeach;?>
+                        </ul>
+                    </div>
+                    <?php endif;?>
+
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <?php echo $this->getPagerHtml(); ?>
+    <?php else : ?>
+        <ul id="categories-list">
+            <?php foreach ($_categories as $_category) : ?>
+                <div class="category-list-item">
+                    <?php echo $this->drawCategory($_category); ?>
+                    <?php $articles = $this->getArticlesByCategory($_category);   ?>
+                    <?php if($articles->getSize() > 0): ?>
+                        <div class="articles-box">
+                            <ul class="kb-articles-listing">
+                                <?php foreach($articles as $_article):?>
+                                    <?php $_article = Mage::getSingleton('mageplaza_kb/article')->load($_article->getId()); ?>
+                                    <li><a href="<?php echo $_article->getArticleUrl();?>"><?php echo $_article->getName();?></a> </li>
+                                <?php endforeach;?>
+                            </ul>
+                        </div>
+                    <?php endif;?>
+                </div>
+
+
+            <?php endforeach; ?>
+        </ul>
+        <script type="text/javascript">
+            kbTree('categorys-list');
+        </script>
+    <?php endif; ?>
+<?php else : ?>
+    <?php echo Mage::helper('mageplaza_kb')->__('There are no categories at this moment'); ?>
+<?php endif; ?>

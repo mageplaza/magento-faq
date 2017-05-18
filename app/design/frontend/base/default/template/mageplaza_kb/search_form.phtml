@@ -1,0 +1,13 @@
+<?php
+?>
+<div class="faq-search-form-container">
+    <form id="faq_search_form" action="<?php echo $this->getResultUrl() ?>" method="get">
+        <div class="faq-search-form">
+            <input id="search" type="text" name="q" value="" class="input-text" maxlength="100"
+                   placeholder="<?php echo $this->__('Search ...'); ?>"/>
+            <input class="button" type="submit" name="submit" style="display: none;" />
+<!--            <div id="search_autocomplete" class="search-autocomplete"></div>-->
+        </div>
+    </form>
+
+</div>
